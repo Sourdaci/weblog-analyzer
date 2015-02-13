@@ -10,6 +10,8 @@ public class LogAnalyzer{
     private int[] hourCounts;
     // Where to calculate the daily access counts.
     private int[] dailyCounts;
+    // Successful access code
+    private int success;
     // Use a LogfileReader to access the data.
     private LogfileReader reader;
 
@@ -23,6 +25,8 @@ public class LogAnalyzer{
         // Create the array object to hold the daily
         // access counts.
         dailyCounts = new int[31];
+        // Set the correct access code
+        success = 200;
         // Create the reader to obtain the data.
         reader = new LogfileReader();
     }
@@ -50,6 +54,19 @@ public class LogAnalyzer{
         }
     }
 
+    /**
+     * Analyze the hourly access data from the log file.
+     */
+    public void analyzeHourlyDataWithCorrectAccess(){
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            if(entry.getState() == success){
+                int hour = entry.getHour();
+                hourCounts[hour]++;
+            }
+        }
+    }
+    
     /**
      * Analyze the daily access data from the log file.
      */
