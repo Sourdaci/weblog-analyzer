@@ -57,6 +57,19 @@ public class LogAnalyzer{
     }
     
     /**
+     * Devuelve la hora con el mayor numero de accesos registrados
+     */
+    public int busiestHour(){
+        int indice = 0;
+        for (int index = 0; index < hourCounts.length; index++){
+            if (hourCounts[index] > hourCounts[indice]){
+                indice = index;
+            }
+        }
+        return indice;
+    }
+    
+    /**
      * Print the hourly counts.
      * These should have been set with a prior
      * call to analyzeHourlyData.
