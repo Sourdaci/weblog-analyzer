@@ -39,6 +39,11 @@ public class LogAnalyzer{
         // Create the array object to hold the hourly
         // access counts.
         hourCounts = new int[24];
+        // Create the array object to hold the daily
+        // access counts.
+        dailyCounts = new int[31];
+        // Set the correct access code
+        success = 200;
         // Create the reader to obtain the data.
         reader = new LogfileReader(nuevoLog);
     }
