@@ -46,6 +46,17 @@ public class LogAnalyzer{
     }
 
     /**
+     * Devuelve el numero total de accesos registrados en el archivo de log
+     */
+    public int numberOfAccesses(){
+        int contador = 0;
+        for (int registro : hourCounts){
+            contador += registro;
+        }
+        return contador;
+    }
+    
+    /**
      * Print the hourly counts.
      * These should have been set with a prior
      * call to analyzeHourlyData.
