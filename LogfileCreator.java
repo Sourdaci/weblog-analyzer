@@ -9,12 +9,18 @@ import java.util.*;
  */
 public class LogfileCreator{
     private Random rand;
+    private int[] accessCodes;
 
     /**
      * Create log files.
      */
     public LogfileCreator(){
         rand = new Random();
+        accessCodes = new int[4];
+        accessCodes[0] = 200;
+        accessCodes[1] = 403;
+        accessCodes[2] = 404;
+        accessCodes[3] = 200;
     }
     
     /**
@@ -58,6 +64,7 @@ public class LogfileCreator{
         int day = 1 + rand.nextInt(28);
         int hour = rand.nextInt(24);
         int minute = rand.nextInt(60);
-        return new LogEntry(year, month, day, hour, minute);
+        int access = rand.nextInt(4);
+        return new LogEntry(year, month, day, hour, minute, accessCodes[access]);
     }
 }
