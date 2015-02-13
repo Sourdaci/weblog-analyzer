@@ -45,6 +45,23 @@ public class LogAnalyzer{
         }
     }
 
+    /** 
+     * Analyze the hourly accesses in the given date
+     *
+     * @param day     The given day
+     * @param month The given month
+     * @param year  The given year
+     */
+    public void analyzeDateData(int day, int month, int year){
+        while(reader.hasNext()) {
+            LogEntry entry = reader.next();
+            if (day == entry.getDay() && month == entry.getMonth() && year == entry.getYear()){
+                int hour = entry.getHour();
+                hourCounts[hour]++;
+            }
+        }
+    }
+    
     /**
      * Devuelve el numero total de accesos registrados en el archivo de log
      */
