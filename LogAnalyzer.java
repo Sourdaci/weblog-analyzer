@@ -83,6 +83,20 @@ public class LogAnalyzer{
     }
     
     /**
+     * Calcula las 2 horas seguidas cuya suma de registros es la mayor del dia
+     * Devuelve la primera hora de las dos
+     */
+    public int highestTwoHoursLoad(){
+        int indice = 0;
+        for (int index = 0; index < (hourCounts.length - 1); index++){
+            if ((hourCounts[indice] + hourCounts[indice + 1]) < (hourCounts[index] + hourCounts[index + 1])){
+                indice = index;
+            }
+        }
+        return indice;
+    }
+    
+    /**
      * Print the hourly counts.
      * These should have been set with a prior
      * call to analyzeHourlyData.
