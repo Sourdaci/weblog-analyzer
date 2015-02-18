@@ -16,9 +16,9 @@ public class LogAnalyzer{
     private LogfileReader reader;
 
     /**
-     * Create an object to analyze hourly web accesses.
+     * Inicializacion generica al crear objetos LogAnalyzer
      */
-    public LogAnalyzer(){ 
+    private void initialize(){
         // Create the array object to hold the hourly
         // access counts.
         hourCounts = new int[24];
@@ -27,6 +27,13 @@ public class LogAnalyzer{
         dailyCounts = new int[31];
         // Set the correct access code
         success = 200;
+    }
+    
+    /**
+     * Create an object to analyze hourly web accesses.
+     */
+    public LogAnalyzer(){ 
+        initialize();
         // Create the reader to obtain the data.
         reader = new LogfileReader();
     }
@@ -36,14 +43,7 @@ public class LogAnalyzer{
      * Crea un nuevo archivo log con el nombre pedido
      */
     public LogAnalyzer(String nuevoLog){ 
-        // Create the array object to hold the hourly
-        // access counts.
-        hourCounts = new int[24];
-        // Create the array object to hold the daily
-        // access counts.
-        dailyCounts = new int[31];
-        // Set the correct access code
-        success = 200;
+        initialize();
         // Create the reader to obtain the data.
         reader = new LogfileReader(nuevoLog);
     }
